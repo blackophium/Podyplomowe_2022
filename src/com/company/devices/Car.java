@@ -1,8 +1,10 @@
 package com.company.devices;
+import com.company.Saleable;
+import com.company.creatures.Human;
 
 import java.util.Objects;
 
-public class Car extends Device{
+public class Car extends Device implements Saleable{
     public Double millage;
     public Double engineVolume;
     public String color;
@@ -35,4 +37,26 @@ public class Car extends Device{
     public int hashCode() {
         return Objects.hash(model, producer, millage, engineVolume, color, value);
     }
+
+@Override
+public void recharge() {
+    System.out.println("podjedź...");
+    System.out.println("zatankuj...");
+    System.out.println("zapłać");
+}
+
+@Override
+public void sell(Human seller, Human buyer, Double price) throws Exception {
+        if(seller.getCar() != this) {
+            throw new Exception("Sprzedawca nie posiada samochodu");
+        }
+        if(buyer.cash < price){
+            throw new Exception("Nie stać Cię na auto.");
+        }
+        buyer.cash -= price;
+        seller.cash += price;
+        buyer.car = this;
+        seller.car = null;
+        System.out.println("Sprzedano");
+        }
 }

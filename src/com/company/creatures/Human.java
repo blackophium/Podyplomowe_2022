@@ -3,6 +3,7 @@ package com.company.creatures;
 import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
+import com.company.Saleable;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +15,9 @@ public class Human extends Animal {
 
     public Phone mobile;
     public Animal pet;
-    private Car car;
+    public Car car;
     private Double salary;
+    public Double cash;
 
     public void setCar(Car car){
         if(this.salary > car.value){

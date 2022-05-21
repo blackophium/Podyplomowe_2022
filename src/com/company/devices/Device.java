@@ -1,6 +1,8 @@
 package com.company.devices;
 
-public class Device {
+import com.company.Saleable;
+
+public abstract class Device implements Saleable{
     final public String producer;
     final public String model;
     final public Integer yearOfProduction;
@@ -18,4 +20,6 @@ public class Device {
     public void turnOn(){
         System.out.println("Włączam...");
     }
+
+    public abstract void recharge();
 }
