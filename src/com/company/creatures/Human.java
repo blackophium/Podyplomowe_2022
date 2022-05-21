@@ -53,8 +53,13 @@ public class Human extends Animal {
         }
     }
 
-    public String toString(){
-        return this.firstName + " " + this.lastName + "lat" + age;
-    }
+@Override
+    public void takeForAWalk(){
+        System.out.println("Idź na spacer");
+    };
 
+    public String toString(){
+
+        return this.firstName + " " + this.lastName + "lat" + age;
+    };
 }
