@@ -1,12 +1,12 @@
 package com.company.creatures;
 
 import com.company.Saleable;
-import com.sun.security.jgss.GSSUtil;
 
-public class Animal implements Feedable, Saleable {
+public abstract class Animal implements Feedable, Saleable {
     private static final double DEFAULT_DOG_WEIGHT = 9.0;
     static final Double DEFAULT_WEIGHT = 5.0;
     static final Double DEFAULT_CAT_WEIGHT = 2.5;
+    private static final Double DEFAULT_FOOD_WEIGHT = 1.0;
 
     public final String species;
     public Double weight;
@@ -38,34 +38,31 @@ public class Animal implements Feedable, Saleable {
         if(buyer.cash < price){
             throw new Exception("Nie stać Cię na zwierzaka.");
         }
+
+        // zablokowanie handlu ludzmi
+        if(this instanceof Human){
+            throw new Exception("Handel ludźmi jest zabroniony!");
+        }
+
         buyer.cash -= price;
         seller.cash += price;
         buyer.pet = this;
         seller.pet = null;
         System.out.println("Sprzedano zwierzaka");
-        // zablokowanie
-        if (this instanceof Human){
-            throw new Exception("Handel ludżmi jest zabroniony!");
-        }
     }
 
     public Double getWeight(){
         return this.weight;
     }
 
-    public void feed(){
-        if (isAlive){
-            weight +=1.0;
-            System.out.println("Thx for feed");
-        } else {
-            System.out.println("Too late");
-        }
+    public void feed() {
+        this.feed(DEFAULT_FOOD_WEIGHT);
     }
 
-    public void feed (Double foodWeight){
+    public void feed(Double foodweight){
         if (isAlive){
-            weight +=foodWeight;
-            System.out.println("Thx for food");
+            weight += foodweight;
+            System.out.println("Thx for feed");
         } else {
             System.out.println("Too late");
         }
@@ -83,8 +80,9 @@ public class Animal implements Feedable, Saleable {
         }
     }
 
-    @Override
-    public void sell(Human seller, Human buyer, Double price) throws Exception {
+public abstract String toString();
+  //  @Override
+  //  public void sell(Human seller, Human buyer, Double price) throws Exception {
 
-    }
 }
+

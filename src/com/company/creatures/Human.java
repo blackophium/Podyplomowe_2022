@@ -1,23 +1,28 @@
 package com.company.creatures;
 
-import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
-import com.company.Saleable;
 
 import java.time.LocalDateTime;
 
 public class Human extends Animal {
     public String firstName;
     public String lastName;
-    public Integer age;
-    public Boolean isAlive;
 
     public Phone mobile;
     public Animal pet;
     public Car car;
     private Double salary;
     public Double cash;
+
+    public Human()
+    {
+        super("homo sapiens");
+    }
+    public Car getCar() {
+
+        return this.car;
+    }
 
     public void setCar(Car car){
         if(this.salary > car.value){
@@ -31,15 +36,8 @@ public class Human extends Animal {
         }
     }
 
-    public Human(){
-        super("homo sapiens");
-    }
-    public Car getCar() {
-        return this.car;
-    }
-
     public double getSalary(){
-            System.out.println("Dane o wypłacie z dnia: " + LocalDateTime.now());
+            System.out.println("Dane o wypłacie pobrane dnia: " + LocalDateTime.now());
             return this.salary;
         }
 
@@ -56,10 +54,14 @@ public class Human extends Animal {
 @Override
     public void takeForAWalk(){
         System.out.println("Idź na spacer");
-    };
+    }
 
     public String toString(){
-
         return this.firstName + " " + this.lastName + "lat" + age;
-    };
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+
+    }
 }

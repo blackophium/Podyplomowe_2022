@@ -8,4 +8,9 @@ public class Pet extends Animal{
     public String toString(){
         return this.species + " " + this.name;
     }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+
+    }
 }

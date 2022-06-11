@@ -11,6 +11,7 @@ public class FarmAnimal extends Animal implements Edible {
         return this.species + " " + this.getWeight();
     }
 
+    @Override
     public void beEaten(){
         this.isAlive = false;
         this.weight= 0.0;
@@ -18,12 +19,17 @@ public class FarmAnimal extends Animal implements Edible {
     }
 
     @Override
-    public void feed(Double foodWeight) {
-
-    }
-
-    @Override
     public void sell(Human seller, Human buyer, Double price) throws Exception {
 
     }
+
+    // @Override
+   // public void feed(Double foodWeight) {
+
+    //}
+
+    //@Override
+    //public void sell(Human seller, Human buyer, Double price) throws Exception {
+
+    //}
 }

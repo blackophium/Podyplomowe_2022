@@ -1,10 +1,10 @@
 package com.company.devices;
-import com.company.Saleable;
+
 import com.company.creatures.Human;
 
 import java.util.Objects;
 
-public class Car extends Device implements Saleable{
+public abstract class Car extends Device implements Rechargeable{
     public Double millage;
     public Double engineVolume;
     public String color;
@@ -13,8 +13,14 @@ public class Car extends Device implements Saleable{
     public Car(String model, String producer, Integer yearOfProduction) {
         super (model, producer, yearOfProduction);
     }
-    @Override
 
+    public void turnOn(){
+        System.out.println("Przekręcam kluczyk");
+        System.out.println("Uruchamiam auto");
+        System.out.println("Jedziemy!");
+    }
+
+    @Override
     public String toString() {
         return "Car{"+
                 "model= '" + model + '\'' +
@@ -23,8 +29,8 @@ public class Car extends Device implements Saleable{
                 ", engine volume= " + engineVolume +
                 ", color= '" + color + '\'' +
                 '}';
-
     }
+
 @Override
     public boolean equals(Object o) {
         if (this ==o) return true;
@@ -59,4 +65,5 @@ public void sell(Human seller, Human buyer, Double price) throws Exception {
         seller.car = null;
         System.out.println("Sprzedano");
         }
+public abstract void refuel();
 }
